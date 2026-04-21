@@ -1,0 +1,36 @@
+{
+    "dashboard": {
+        "dashboard": "Dashboard",
+        "control": "Boshqaruv paneli",
+        "settings": "Sozlamalar",
+        "forms": {
+            "required": "Bu maydon to'ldirilishi shart",
+            "loading": "Yuklanmoqda...",
+            "yes": "Ha",
+            "no": "Yo'q",
+            "cancel": "Bekor qilish",
+            "delete": "O'chirish",
+            "edit": "Tahrirlash",
+            "add": "Qo'shish",
+            "save": "Saqlash",
+            "saveing": "Saqlanmoqda...",
+            "close": "Yopish",
+            "search": "Qidirish",
+            "filter": "Filter",
+            "reset": "Rejalashtirish",
+            "submit": "Yuborish",
+            "confirm": "Tasdiqlash",
+            "warningdesc": "O'chirilgan ma'lumotlar qayta tiklanmaydi. O'chirishni tasdiqlaysizmi?",
+            "warnigtitle": "Ogohlantirish",
+            "saved": "Muvaffaqiyatli",
+            "success": "Ma'lumotlar muvaffaqiyatli saqlandi",
+            "deleted": "Muvaffaqiyatli o'chirildi",
+            "updated": "Muvaffaqiyatli yangilandi",
+            "error": "Xatolik",
+            "errors": "Ma'lumotlarni saqlashda xatolik yuz berdi!",
+            "400": "Ma'lumotlar to'liq emas",
+            "404": "Ma'lumot topilmadi",
+            "500": "Server xatoligi"
+        }
+    }
+}

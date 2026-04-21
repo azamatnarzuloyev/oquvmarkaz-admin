@@ -1,0 +1,6 @@
+export const ADMIN      = 'admin'
+export const RECEPTION  = 'reception'
+export const TEACHER    = 'teacher'
+export const STUDENT    = 'student'
+export const USER       = 'user'
+export const DASHBOARD  = 'dashboard'

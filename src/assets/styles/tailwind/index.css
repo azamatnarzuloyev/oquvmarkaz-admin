@@ -1,0 +1,565 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--neutral: #ffffff;
+		--primary: #2a85ff;
+		--primary-deep: #0069f6;
+		--primary-mild: #4996ff;
+		--primary-subtle: #2a85ff1a;
+		--error: #ff6a55;
+		--error-subtle: #ff6a551a;
+		--success: #10b981;
+		--success-subtle: #05eb7624;
+		--info: #2a85ff;
+		--info-subtle: #2a85ff1a;
+		--warning: #f59e0b;
+		--warning-subtle: #ffd40045;
+		--gray-50: #fafafa;
+		--gray-100: #f5f5f5;
+		--gray-200: #e5e5e5;
+		--gray-300: #d4d4d4;
+		--gray-400: #a3a3a3;
+		--gray-500: #737373;
+		--gray-600: #525252;
+		--gray-700: #404040;
+		--gray-800: #262626;
+		--gray-900: #171717;
+		--gray-950: #0a0a0a;
+	}
+
+	.dark {
+		--neutral: #ffffff;
+		--primary: #2a85ff;
+		--primary-deep: #0069f6;
+		--primary-mild: #4996ff;
+		--primary-subtle: #2a85ff1a;
+		--error: #ff6a55;
+		--error-subtle: #ff6a551a;
+		--success: #10b981;
+		--success-subtle: #05eb7624;
+		--info: #2a85ff;
+		--info-subtle: #2a85ff1a;
+		--warning: #f59e0b;
+		--warning-subtle: #ffd40045;
+		--gray-50: #fafafa;
+		--gray-100: #f5f5f5;
+		--gray-200: #e5e5e5;
+		--gray-300: #d4d4d4;
+		--gray-400: #a3a3a3;
+		--gray-500: #737373;
+		--gray-600: #525252;
+		--gray-700: #404040;
+		--gray-800: #262626;
+		--gray-900: #171717;
+		--gray-950: #0a0a0a;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	  }
+	  
+	body {
+		@apply text-gray-500 dark:text-gray-400 text-sm bg-gray-100 dark:bg-gray-950 leading-normal font-medium;
+		-webkit-font-smoothing: antialiased;
+		overflow-x: hidden;
+	}
+
+	h1,
+	.h1 {
+		@apply text-4xl font-bold text-gray-900 dark:text-gray-100;
+	}
+
+	h2,
+	.h2 {
+		@apply text-3xl font-bold text-gray-900 dark:text-gray-100;
+	}
+
+	h3,
+	.h3 {
+		@apply text-2xl font-bold text-gray-900 dark:text-gray-100;
+	}
+
+	h4,
+	.h4 {
+		@apply text-xl font-bold text-gray-900 dark:text-gray-100;
+	}
+
+	h5,
+	.h5 {
+		@apply text-lg font-bold text-gray-900 dark:text-gray-100;
+	}
+
+	h6,
+	.h6 {
+		@apply text-base font-semibold text-gray-900 dark:text-gray-100;
+	}
+
+	hr {
+		@apply border-gray-200 dark:border-gray-600;
+	}
+
+	.heading-text {
+		@apply text-gray-900 dark:text-gray-100;
+	}
+
+	.control-list .avatar {
+		display: none !important;
+	}
+}
+
+/* scroll */
+/* ::-webkit-scrollbar {
+	width: 8px;
+	display: block !important;
+	border-radius: 5px;
+	padding: 0;
+	margin: 0;
+	overflow: scroll;
+	height: 100%;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+	background-color: #0063b9;
+	cursor: pointer;
+	border-radius: 50px;
+  }
+   */
+
+.slect-w * {
+	cursor: pointer;
+	::-webkit-scrollbar {
+		width: 5px;
+		display: block !important;
+		border-radius: 5px;
+		padding: 0;
+		margin: 0;
+		overflow: scroll;
+		height: 100%;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: gray;
+		cursor: pointer;
+		border-radius: 50px;
+	  }
+}
+
+body{
+	overflow-x: hidden;
+}
+
+.card-order .card-body{
+	@apply max-xs:!px-0
+}
+
+.cards .card-body{
+	@apply !p-3
+}
+
+  .pdf-content {
+    position: absolute;
+    left: -9999px;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .pdf-content1 {
+	position: absolute;
+    left: -9999px;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+}
+
+.count{
+	position: absolute;
+    left: -9999px;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+}
+
+  .pdiv .pdf-content {
+	position: static;
+        left: auto;
+        visibility: visible;
+        height: auto;
+        overflow: visible;
+  }
+
+  .pdiv
+	.pdf-content1 {
+		position: static;
+        left: auto;
+        visibility: visible;
+        height: auto;
+        overflow: visible;
+	}
+
+
+@media print {
+	.pdf-content {
+	    position: static;
+        left: auto;
+        visibility: visible;
+        height: auto;
+        overflow: visible;
+	}
+	.print {
+		padding: 0 15px 0 15px;
+	}
+
+	.pdf-content1 {
+		position: static;
+        left: auto;
+        visibility: visible;
+        height: auto;
+        overflow: visible;
+	}
+	.count{
+		position: static;
+        left: auto;
+        visibility: visible;
+        height: auto;
+        overflow: visible;
+		}
+
+	.count-input{
+	position: absolute;
+    left: -9999px;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+	}
+
+    @page {
+    size: landscape;
+     }
+
+      .page-break {
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+  
+  .page-break:last-child {
+    page-break-after: auto;
+  }
+  
+  }
+  
+
+  .print {
+	page-break-after: always;
+  }
+  
+
+  .bg-card{
+	background-image: url('../../BackgroundCard1-Oyd41qA-.webp');
+	background-position: center;
+	
+	
+  }
+
+
+
+.pdiv .pdf-content {
+    display: block !important;
+    visibility: visible !important; /* Qo'shing */
+}
+
+@media print {
+    .pdf-content {
+        display: block;
+    }
+}
+  
+
+
+  .slect-w * {
+	cursor: pointer;
+	::-webkit-scrollbar {
+		width: 5px;
+		display: block !important;
+		border-radius: 5px;
+		padding: 0;
+		margin: 0;
+		overflow: scroll;
+		height: 100%;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: gray;
+		cursor: pointer;
+		border-radius: 50px;
+	  }
+}
+
+.ck-content {
+    font-family: 'Roboto', Arial, sans-serif !important;
+}
+
+
+
+.ck .ck-powered-by{
+	display: none;
+}
+
+.ck-widget.html-object-embed .html-object-embed__content{
+  pointer-events: visiblePainted !important;
+}
+
+.ck-editor__editable:not(.ck-read-only) .ck-media__wrapper > *:not(.ck-media__placeholder) {
+   pointer-events: visiblePainted !important;
+}
+
+.cke_notification.cke_notification_warning{
+	display: none;
+}
+
+.cke_button.cke_button__iframe.cke_button_off{
+	display: none;
+}
+
+#cke_43{
+  display: none;
+}
+
+
+
+
+/* Media Modal Overlay */
+.ckeditor-media-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Container */
+.ckeditor-media-modal {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Header */
+.ckeditor-media-modal .modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ckeditor-media-modal .modal-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.ckeditor-media-modal .close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.ckeditor-media-modal .close-btn:hover {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+/* Modal Body */
+.ckeditor-media-modal .modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.ckeditor-media-modal .form-group {
+    margin-bottom: 20px;
+}
+
+.ckeditor-media-modal .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #374151;
+}
+
+.ckeditor-media-modal .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.ckeditor-media-modal .form-control:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.ckeditor-media-modal .form-group small {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* Dimensions Group */
+.ckeditor-media-modal .dimensions-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Checkbox */
+.ckeditor-media-modal .form-group input[type="checkbox"] {
+    margin-right: 8px;
+    width: auto;
+    cursor: pointer;
+}
+
+.ckeditor-media-modal .form-group label:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+/* Preview Section */
+.ckeditor-media-modal .preview-section {
+    margin-top: 24px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+}
+
+.ckeditor-media-modal .preview-section label {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+
+/* Modal Footer */
+.ckeditor-media-modal .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    background: #f9fafb;
+}
+
+.ckeditor-media-modal .btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    outline: none;
+}
+
+.ckeditor-media-modal .btn-secondary {
+    background: white;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.ckeditor-media-modal .btn-secondary:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.ckeditor-media-modal .btn-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.ckeditor-media-modal .btn-primary:hover {
+    background: #2563eb;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.ckeditor-media-modal .btn-primary:active {
+    background: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .ckeditor-media-modal {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .ckeditor-media-modal .modal-header,
+    .ckeditor-media-modal .modal-body,
+    .ckeditor-media-modal .modal-footer {
+        padding: 16px;
+    }
+
+    .ckeditor-media-modal .dimensions-group {
+        grid-template-columns: 1fr;
+    }
+}
+
+.ck.ck-editor__main > .ck-editor__editable {
+    min-height: 500px;
+    max-height: 600px;
+}

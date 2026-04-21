@@ -1,0 +1,80 @@
+.menu-item {
+  @apply cursor-pointer font-semibold px-3 rounded-lg flex items-center w-full whitespace-nowrap gap-x-2 transition-colors duration-150 text-gray-600 dark:text-gray-400;
+
+
+  &.menu-item-hoverable {
+    @apply hover:text-gray-900 hover:bg-gray-100 dark:hover:text-gray-100 dark:hover:bg-gray-700;
+  }
+
+  & .svg svg{
+    @apply fill-gray-600;
+  }
+
+
+  &.menu-item-active {
+    @apply text-primary hover:text-primary bg-primary-subtle ;
+    
+    & .svg svg {
+      @apply !fill-primary duration-150;
+  }
+  }
+
+  a {
+    @apply outline-0
+  }
+}
+
+.menu-item .menu-item-hoverable {
+  @apply !hidden
+}
+
+
+.menu-item:not(.menu-item-disabled):hover .svg svg {
+  @apply fill-gray-900 duration-150;
+}
+
+.menu-collapse-item {
+  @apply cursor-pointer select-none font-semibold px-3 h-12 rounded-lg flex items-center justify-between transition-colors duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-100 dark:hover:bg-gray-700;
+
+  &.menu-collapse-item-active {
+    @apply text-primary bg-primary-subtle hover:bg-primary-subtle;
+  }
+}
+
+.menu-collapse .menu-item-active {
+    @apply text-primary hover:text-primary bg-transparent ;
+
+}
+
+.menu-collapse .menu-collapse-item-active .svg svg {
+   @apply !fill-primary duration-150 ;
+}
+
+.menu-collapse .menu-collapse-item:hover  .svg svg {
+   @apply  fill-gray-900 ;
+}
+
+.menu-collapse   .svg svg {
+   @apply  fill-gray-600 ;
+}
+
+.menu-item-divider {
+  @apply border-b border-gray-200 dark:border-gray-700 my-2;
+}
+
+.menu-item-disabled {
+  @apply cursor-not-allowed opacity-60;
+}
+
+.menu-item-link {
+  @apply flex w-full h-full items-center;
+}
+
+.menu-group{
+  & ul{
+    @apply space-y-1 max-lg:pt-2;
+    & span{
+      @apply block
+    }
+  }
+}
