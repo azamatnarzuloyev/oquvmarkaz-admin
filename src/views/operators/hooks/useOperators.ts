@@ -28,7 +28,7 @@ export interface StaffFormData {
 }
 
 export function useStaff() {
-    return useQuery<{ results: StaffMember[]; count: number }>({
+    return useQuery<{ data: StaffMember[]; meta: { total: number } }>({
         queryKey: [KEY],
         queryFn:  () => getData('/auth/staff/'),
     })

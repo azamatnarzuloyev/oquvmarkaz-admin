@@ -45,7 +45,7 @@ const OperatorsPage = () => {
     const toggleActive = useToggleStaffActive()
     const resetPwd     = useResetPassword()
 
-    const staff = data?.results ?? []
+    const staff = data?.data ?? []
 
     const openCreate = () => {
         form.resetFields()
