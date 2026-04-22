@@ -125,6 +125,7 @@ const LeadDetail = ({ lead, open, onClose, onEdit }: LeadDetailProps) => {
     const activities = data?.data?.activities ?? []
 
     return (
+        <>
         <Drawer
             open={open}
             onClose={onClose}
@@ -379,6 +380,7 @@ const LeadDetail = ({ lead, open, onClose, onEdit }: LeadDetailProps) => {
                 onChange={(e) => setLostReason(e.target.value)}
             />
         </Modal>
+        </>
     )
 }
 
