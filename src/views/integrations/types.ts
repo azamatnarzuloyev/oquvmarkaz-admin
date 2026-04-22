@@ -47,3 +47,20 @@ export interface OverviewData {
     total_leads:        number
     avg_ctr:            number
 }
+
+export type InstagramEventType = 'comment' | 'dm'
+export type InstagramStatus    = 'replied' | 'dm_sent' | 'lead_created' | 'failed'
+
+export interface InstagramActivity {
+    id:           number
+    event_type:   InstagramEventType
+    sender_id:    string
+    sender_name:  string
+    message_text: string
+    ai_reply:     string
+    status:       InstagramStatus
+    lead_id:      number | null
+    lead_name:    string | null
+    lead_phone:   string | null
+    created_at:   string
+}

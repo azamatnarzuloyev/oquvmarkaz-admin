@@ -13,6 +13,7 @@ import {
 } from './hooks/useIntegrations'
 import type { WebhookToken, WebhookPlatform } from './types'
 import { PLATFORM_LABELS } from './types'
+import InstagramTab from './InstagramTab'
 
 const PLATFORM_OPTIONS = Object.entries(PLATFORM_LABELS).map(([v, l]) => ({ value: v, label: l }))
 
@@ -369,6 +370,16 @@ const IntegrationsPage = () => {
                                 )}
                             </div>
                         ),
+                    },
+                    {
+                        key: 'instagram',
+                        label: (
+                            <span className="flex items-center gap-1.5">
+                                <FaInstagram className="text-pink-500" />
+                                Instagram
+                            </span>
+                        ),
+                        children: <InstagramTab />,
                     },
                     {
                         key: 'docs',
