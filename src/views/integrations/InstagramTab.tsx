@@ -56,7 +56,7 @@ const InstagramTab = () => {
         status:     statusFilter || undefined,
     })
 
-    const activities = data?.results ?? []
+    const activities = data?.data ?? []
 
     const columns = [
         {

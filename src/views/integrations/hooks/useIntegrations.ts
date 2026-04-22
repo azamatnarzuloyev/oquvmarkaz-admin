@@ -7,7 +7,7 @@ const BASE = import.meta.env.VITE_API_URL
 const KEY   = 'integrations'
 
 export function useWebhookTokens() {
-    return useQuery<{ results: WebhookToken[] }>({
+    return useQuery<{ data: WebhookToken[] }>({
         queryKey: [KEY, 'tokens'],
         queryFn:  () => getData('/integrations/tokens/'),
     })
@@ -61,7 +61,7 @@ export function useInstagramActivities(params?: { event_type?: string; status?: 
     if (params?.event_type) query.set('event_type', params.event_type)
     if (params?.status) query.set('status', params.status)
     const qs = query.toString() ? `?${query.toString()}` : ''
-    return useQuery<{ results: InstagramActivity[]; count: number }>({
+    return useQuery<{ data: InstagramActivity[]; meta: { total: number } }>({
         queryKey: [KEY, 'instagram-activity', params],
         queryFn:  () => getData(`/integrations/instagram/activity/${qs}`),
         refetchInterval: 30_000,

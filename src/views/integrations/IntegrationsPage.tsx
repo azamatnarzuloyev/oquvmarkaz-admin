@@ -295,7 +295,7 @@ const IntegrationsPage = () => {
     const { data, isLoading } = useWebhookTokens()
     const createToken = useCreateToken()
 
-    const tokens = data?.results ?? []
+    const tokens = data?.data ?? []
 
     const handleCreate = async () => {
         try {
