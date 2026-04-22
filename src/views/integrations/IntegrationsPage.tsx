@@ -14,6 +14,7 @@ import {
 import type { WebhookToken, WebhookPlatform } from './types'
 import { PLATFORM_LABELS } from './types'
 import InstagramTab from './InstagramTab'
+import TelegramTab from './TelegramTab'
 
 const PLATFORM_OPTIONS = Object.entries(PLATFORM_LABELS).map(([v, l]) => ({ value: v, label: l }))
 
@@ -380,6 +381,16 @@ const IntegrationsPage = () => {
                             </span>
                         ),
                         children: <InstagramTab />,
+                    },
+                    {
+                        key: 'telegram',
+                        label: (
+                            <span className="flex items-center gap-1.5">
+                                <FaTelegram className="text-sky-500" />
+                                Telegram
+                            </span>
+                        ),
+                        children: <TelegramTab />,
                     },
                     {
                         key: 'docs',
