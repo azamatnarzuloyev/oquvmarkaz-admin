@@ -93,6 +93,28 @@ const dashboardsNavigationConfig: NavigationTree[] = [
             },
         ],
     },
+    {
+        key: 'settings',
+        path: '',
+        title: 'Sozlamalar',
+        translateKey: 'settings.title',
+        icon: 'settings',
+        type: NAV_ITEM_TYPE_TITLE,
+        authority: [ADMIN],
+        meta: { horizontalMenu: { layout: 'default' } },
+        subMenu: [
+            {
+                key: 'settings.operators',
+                path: '/operators',
+                title: 'Operatorlar',
+                translateKey: 'settings.operators',
+                icon: 'operators',
+                type: NAV_ITEM_TYPE_ITEM,
+                authority: [ADMIN],
+                subMenu: [],
+            },
+        ],
+    },
 ]
 
 export default dashboardsNavigationConfig

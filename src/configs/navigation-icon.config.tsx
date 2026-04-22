@@ -1,4 +1,4 @@
-import { TbLayoutDashboard, TbTargetArrow, TbUsers, TbSettings, TbChartBar, TbCalendar, TbCreditCard, TbWebhook, TbChartDots3 } from 'react-icons/tb'
+import { TbLayoutDashboard, TbTargetArrow, TbUsers, TbSettings, TbChartBar, TbCalendar, TbCreditCard, TbWebhook, TbChartDots3, TbUserCog } from 'react-icons/tb'
 
 export type NavigationIcons = Record<string, JSX.Element>
 
@@ -13,6 +13,8 @@ const navigationIcon: NavigationIcons = {
     settings:     <TbSettings        size={18} />,
     integrations: <TbWebhook         size={18} />,
     targeting:    <TbChartDots3      size={18} />,
+    operators:    <TbUserCog         size={18} />,
+    crm:          <TbTargetArrow     size={18} />,
 }
 
 export default navigationIcon

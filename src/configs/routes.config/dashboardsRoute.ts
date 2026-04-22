@@ -41,6 +41,13 @@ const dashboardsRoute: Routes = [
         authority: [ADMIN, RECEPTION],
         meta: { pageContainerType: 'contained' },
     },
+    {
+        key: 'settings.operators',
+        path: '/operators',
+        component: lazy(() => import('@/views/operators/OperatorsPage')),
+        authority: [ADMIN],
+        meta: { pageContainerType: 'contained' },
+    },
 ]
 
 export default dashboardsRoute
