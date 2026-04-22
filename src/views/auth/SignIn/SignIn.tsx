@@ -20,7 +20,7 @@ export const SignInBase = ({ disableSubmit }: SignInProps) => {
                             color: 'rgb(35 25 113',
                         }}
                     >
-                        XS ADMIN
+                        ADMIN
                     </h4>
                 </div>
                 <SignInForm disableSubmit={disableSubmit} />
