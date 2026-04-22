@@ -1,14 +1,14 @@
 import { useState } from 'react'
-import { Drawer, Tag, Button, Input, Select, Divider, Spin, message, Tooltip } from 'antd'
-import { HiPencil, HiPhone, HiAnnotation, HiClock, HiExclamationCircle } from 'react-icons/hi'
+import { Drawer, Tag, Button, Input, Select, Divider, Spin, message, Tooltip, Modal } from 'antd'
+import { HiPencil, HiPhone, HiAnnotation, HiClock, HiExclamationCircle, HiChevronRight } from 'react-icons/hi'
 import { FaInstagram, FaTelegram, FaGlobe, FaUsers } from 'react-icons/fa'
 import { HiQuestionMarkCircle } from 'react-icons/hi'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import 'dayjs/locale/uz'
-import type { Lead, LeadSource, ActivityType } from '../types'
-import { LEAD_STATUS_LABELS, LEAD_STATUS_COLORS, LEAD_SOURCE_LABELS } from '../types'
-import { useLead, useAddActivity, useConvertLead } from '../hooks/useLeads'
+import type { Lead, LeadSource, LeadStatus, ActivityType } from '../types'
+import { LEAD_STATUS_LABELS, LEAD_STATUS_COLORS, LEAD_SOURCE_LABELS, LEAD_STATUSES } from '../types'
+import { useLead, useAddActivity, useConvertLead, useChangeLeadStatus } from '../hooks/useLeads'
 import { getApiError } from '@/service/get.service'
 import useResponsive from '@/utils/hooks/useResponsive'
 
@@ -50,16 +50,46 @@ interface LeadDetailProps {
 }
 
 const LeadDetail = ({ lead, open, onClose, onEdit }: LeadDetailProps) => {
-    const [actType, setActType]       = useState<ActivityType>('call')
-    const [actContent, setActContent] = useState('')
+    const [actType, setActType]         = useState<ActivityType>('call')
+    const [actContent, setActContent]   = useState('')
+    const [lostModal, setLostModal]     = useState(false)
+    const [lostReason, setLostReason]   = useState('')
     const { smaller } = useResponsive()
     const isMobile = smaller.md
 
     const { data, isLoading } = useLead(lead?.id ?? 0)
     const detail = data?.data ?? lead
 
-    const addActivity = useAddActivity()
-    const convertLead = useConvertLead()
+    const addActivity    = useAddActivity()
+    const convertLead    = useConvertLead()
+    const changeStatus   = useChangeLeadStatus()
+
+    const handleStatusChange = (newStatus: LeadStatus) => {
+        if (!detail) return
+        if (newStatus === detail.status) return
+        if (newStatus === 'lost') {
+            setLostModal(true)
+            return
+        }
+        changeStatus.mutate(
+            { id: detail.id, status: newStatus },
+            { onSuccess: () => message.success("Holat o'zgartirildi") },
+        )
+    }
+
+    const handleLostConfirm = () => {
+        if (!detail) return
+        changeStatus.mutate(
+            { id: detail.id, status: 'lost', lost_reason: lostReason },
+            {
+                onSuccess: () => {
+                    message.success("Holat o'zgartirildi")
+                    setLostModal(false)
+                    setLostReason('')
+                },
+            },
+        )
+    }
 
     const handleAddActivity = async () => {
         if (!actContent.trim() || !detail) return
@@ -165,6 +195,44 @@ const LeadDetail = ({ lead, open, onClose, onEdit }: LeadDetailProps) => {
 
             {/* Body */}
             <div className="px-5 py-4 -mt-3 overflow-y-auto" style={{ maxHeight: isMobile ? 'calc(92dvh - 160px)' : 'calc(100dvh - 140px)' }}>
+
+                {/* Status stepper */}
+                <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-3 mb-4">
+                    <div className="text-xs text-gray-400 mb-2 font-medium">Holat o'zgartirish</div>
+                    <div className="flex items-center gap-1 flex-wrap">
+                        {LEAD_STATUSES.map((s, i) => {
+                            const isActive  = detail.status === s
+                            const colorMap: Record<LeadStatus, string> = {
+                                new:       'bg-blue-500',
+                                no_answer: 'bg-gray-400',
+                                thinking:  'bg-orange-400',
+                                trial:     'bg-purple-500',
+                                converted: 'bg-emerald-500',
+                                lost:      'bg-red-400',
+                            }
+                            const activeBg = colorMap[s]
+                            return (
+                                <div key={s} className="flex items-center gap-1">
+                                    <button
+                                        onClick={() => handleStatusChange(s)}
+                                        disabled={changeStatus.isPending}
+                                        className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-all ${
+                                            isActive
+                                                ? `${activeBg} text-white shadow-sm`
+                                                : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+                                        }`}
+                                    >
+                                        {LEAD_STATUS_LABELS[s]}
+                                    </button>
+                                    {i < LEAD_STATUSES.length - 1 && (
+                                        <HiChevronRight className="text-gray-200 flex-shrink-0" size={12} />
+                                    )}
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+
                 {/* Info cards */}
                 <div className="grid grid-cols-2 gap-2 mb-4">
                     {detail.trial_date && (
@@ -290,6 +358,27 @@ const LeadDetail = ({ lead, open, onClose, onEdit }: LeadDetailProps) => {
                 )}
             </div>
         </Drawer>
+
+        {/* Lost reason modal */}
+        <Modal
+            title="Yo'qotish sababi"
+            open={lostModal}
+            onOk={handleLostConfirm}
+            onCancel={() => { setLostModal(false); setLostReason('') }}
+            okText="Saqlash"
+            cancelText="Bekor"
+            confirmLoading={changeStatus.isPending}
+            okButtonProps={{ danger: true }}
+            destroyOnClose
+        >
+            <Input.TextArea
+                className="mt-3"
+                rows={3}
+                placeholder="Nima sababdan rad etdi? (ixtiyoriy)"
+                value={lostReason}
+                onChange={(e) => setLostReason(e.target.value)}
+            />
+        </Modal>
     )
 }
 
